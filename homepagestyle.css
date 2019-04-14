@@ -1,11 +1,24 @@
 #bodycenter {
     margin: auto;
-    width: 28%;
-    padding: 10px;
+	width: 19%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+	display: block;
 }
+
 
 body {
 	background: #FFFBD9;
+}
+
+#form {
+	margin: auto;
+	width: 28%;
+	padding: 30px;
+	border: 2px solid black;
+	outline: #72d4ba solid 10px;
+	text-align: center;
 }
 
 
