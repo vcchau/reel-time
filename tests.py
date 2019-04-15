@@ -1,7 +1,6 @@
 from app import app 
 from flask import url_for
 import unittest
-from flaskext.mysql import MySQL
 
 
 
