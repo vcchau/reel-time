@@ -1,7 +1,7 @@
 before_script:
     - date 
     - uname -a
-    - printnev | sort
+    - printenv | sort
     - sudo apt-get update && sudo apt-get -y upgrade 
 
   
