@@ -1,0 +1,12 @@
+before_script:
+    - date 
+    - uname -a
+    - printnev | sort
+    - sudo apt-get update && sudo apt-get -y upgrade 
+
+  
+unittest:
+  image: python:latest
+  script:
+    - pip install -r requirements.txt
+    - python tests.py
