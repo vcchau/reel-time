@@ -13,30 +13,55 @@
   
   <div id="form">
       <form action="log_catch" method="post">
+          {{ message }}
           <h1>Log a catch</h1>
           <h3>Greater area: 
-              <select>
-            <option value="">- Please select below -</option>
-            <option value="Houston" name ="area">Houston</option>
-            <option value="Dallas" name ="area">Dallas</option>
-            <option value="Austin" name ="area">Austin</option>
-        </select></h3>
+            <select name="area" id="area">
+                <option value="">- Please select below -</option>
+                <option value="Lake Houston" name ="location">Lake Houston</option>
+                <option value="Sheldon Lake" name ="location">Sheldon Lake</option>
+                <option value="Buffalo Bayou" name ="location">Buffalo Bayou</option>
+                <option value="Clear Lake" name ="location">Clear Lake</option>
+                <option value="Spring Creek" name ="location">Spring Creek</option>
+                <option value="Grapevine Lake" name ="location">Grapevine Lake</option>
+                <option value="Lewisville Lake" name ="location">Lewisville Lake</option>
+                <option value="Joe Pool Lake" name ="location">Joe Pool Lake</option>
+                <option value="Lake Ray Hubbard" name ="location">Lake Ray Hubbard</option>
+                <option value="Cedar Creek Reservoir" name ="location">Cedar Creek Reservoir</option>
+                <option value="Colorado River" name ="location">Colorado River</option>
+                <option value="Lady Bird Lake" name ="location">Lady Bird Lake</option>
+                <option value="Lake Austin" name ="location">Lake Austin</option>
+                <option value="Shoal Creek" name ="location">Shoal Creek</option>
+                <option value="Barton Creek" name ="location">Barton Creek</option>
+                <option value="Mueller Lake" name ="location">Mueller Lake</option>
+            </select>
+        </h3>
           
         <h3>Specific location: 
-            <select>
+            <select name ="location" id="location">
             <option value="">- Please select below -</option>
-            <option value="Houston" name ="location">Houston</option>
-            <option value="Dallas" name ="location">Dallas</option>
-            <option value="Austin" name ="location">Austin</option>
+            <option value="Houston">Houston</option>
+            <option value="Dallas">Dallas</option>
+            <option value="Austin">Austin</option>
         </select></h3>
 
         <h3>Fish species: 
-            <select>
+            <select name ="species" id="species">
             <option value="">- Please select below -</option>
-            <option value="Houston" name ="species">Grouper</option>
-            <option value="Dallas" name ="species">Trout</option>
-            <option value="Austin" name ="species">Bass</option>
-            <option value="Other" name ="species">Other</option>
+            <option name ="Largemouth bass">Largemouth bass</option>
+            <option name ="Smallmouth bass">Smallmouth bass</option>
+            <option name ="Guadalupe bass">Guadalupe bass</option>
+            <option name ="White bass">White bass</option>
+            <option name ="Channel catfish">Channel catfish</option>
+            <option name ="Blue catfish">Blue catfish</option>
+            <option name ="Bluegill">Bluegill</option>
+            <option name ="Green Sunfish">Green Sunfish</option>
+            <option name ="Longear Sunfish">Longear Sunfish</option>
+            <option name ="Carp">Carp</option>
+            <option name ="Alligator Gar">Alligator Gar</option>
+            <option name ="Spotted Gar">Spotted Gar</option>
+            <option name ="Redhorse Sucker">Redhorse Sucker</option>
+            <option value="Other">Other</option>
         </select>
         <br>
         If other:
