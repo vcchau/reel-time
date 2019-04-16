@@ -78,13 +78,13 @@ def add_to_db():
         return render_template('log.html', message="Please enter a valid species.")
         
 
-    print "Args:"
-    print area, "."
-    print area == 'empty'
-    print location, "."
-    print species, "."
-    print curr_amount, "."
-    print other, "."
+    # print "Args:"
+    # print area, "."
+    # print area == 'empty'
+    # print location, "."
+    # print species, "."
+    # print curr_amount, "."
+    # print other, "."
 
     db, username, password, hostname, port = get_db_creds()
 
