@@ -74,7 +74,7 @@ def add_to_db():
     other = request.form.get('other_species')
     if(species == 'Other' and other != None and other != ""):
     	species = request.form.get('other_species')
-    elif not (species == 'Other' and other):
+    elif (species != 'Other' and other != ''):
         return render_template('log.html', message="Please enter a valid species.")
         
 
@@ -149,15 +149,15 @@ def lookup_search():
         amount = (row[3])
         pop = ""
         if(amount < 3):
-        	pop = "Population: POOR"
+        	pop = "Population - POOR"
         elif(amount < 7):
-        	pop = "Population: FAIR"
+        	pop = "Population - FAIR"
         elif(amount < 11):
-        	pop = "Population: GOOD"
+        	pop = "Population - GOOD"
         else:
-        	pop = "Population: EXCELLENT"
-        tup = (species, pop)
-        results.append(tup)
+        	pop = "Population - EXCELLENT"
+        res = species + ": " + pop
+        results.append(res)
 
     cnx.commit()
     if len(results) == 0:

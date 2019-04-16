@@ -16,7 +16,17 @@
           {{ message | safe }}
           <h1>Log a catch</h1>
           <h3>Greater area: 
-            <select name="area" id="area">
+              <select name="area" id="area">
+            <option value="">- Please select below -</option>
+            <option value="Houston">Houston</option>
+            <option value="Dallas">Dallas</option>
+            <option value="Austin">Austin</option>
+        </select>
+            
+        </h3>
+          
+        <h3>Specific location: 
+            <select name ="location" id="location">
                 <option value="">- Please select below -</option>
                 <option value="Lake Houston">Lake Houston</option>
                 <option value="Sheldon Lake">Sheldon Lake</option>
@@ -35,15 +45,7 @@
                 <option value="Barton Creek">Barton Creek</option>
                 <option value="Mueller Lake">Mueller Lake</option>
             </select>
-        </h3>
-          
-        <h3>Specific location: 
-            <select name ="location" id="location">
-            <option value="">- Please select below -</option>
-            <option value="Houston">Houston</option>
-            <option value="Dallas">Dallas</option>
-            <option value="Austin">Austin</option>
-        </select></h3>
+            </h3>
 
         <h3>Fish species: 
             <select name ="species" id="species">

@@ -10,20 +10,22 @@
       <a href="/"><img src="{{ url_for('static', filename='images/reeltimelogo.png') }}"></a>
     </div>
 
+
   
-<<<<<<< HEAD
+
+  
   <div id="form">
+        <div id="result">
+                <p>Result:</p>
+                <p>{{ message }}</p>
+                <p>{%for result in results%}
+                    {{result}} <br/>
+                    {% endfor %}</p>
+              </div>
       <form action="lookup_search" method="get">
           <h1>Location Lookup</h1>
           <h3>Greater area:
             <select name = "area">
-=======
-  <div id="form"> 
-      <form action="lookup_search" method="get">
-          <h1>Location Lookup</h1>
-          <h3>Greater area: 
-              <select name ="area">
->>>>>>> ed8992dd1a196443084d5a039b6285f2768af9dc
             <option value="">- Please select below -</option>
             <option value="Houston">Houston</option>
             <option value="Dallas">Dallas</option>
@@ -31,7 +33,6 @@
         </select></h3>
           
         <h3>Specific location: 
-<<<<<<< HEAD
             <select name = "location">
             <option value="">- Please select below -</option>
             <option value="Lake Houston">Lake Houston</option>
@@ -50,13 +51,6 @@
             <option value="Shoal Creek">Shoal Creek</option>
             <option value="Barton Creek">Barton Creek</option>
             <option value="Mueller Lake">Mueller Lake</option>
-=======
-            <select name ="location">
-            <option value="">- Please select below -</option>
-            <option value="Houston" >Houston</option>
-            <option value="Dallas">Dallas</option>
-            <option value="Austin">Austin</option>
->>>>>>> ed8992dd1a196443084d5a039b6285f2768af9dc
         </select></h3>
         
         <br>
@@ -65,13 +59,6 @@
     </form>
   </div>
 
-   <div id="footer">
-      <p>Result:</p>
-      <p>{{ message }}</p>
-      <p>{%for result in results%}
-          {{result}} <br/>
-          {% endfor %}</p>
-    </div>
 
 </body>
 </html>
