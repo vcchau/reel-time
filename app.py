@@ -55,7 +55,7 @@ def log_catch():
     return render_template("log.html")
 
 @app.route('/log_catch', methods=['POST'])
-def add_to_db():
+def log_catch():
     print("Received request.")
     area = request.form['area']
     location = request.form['location']
@@ -89,9 +89,53 @@ def add_to_db():
     try:
         cur.execute(sql, val)
         cnx.commit()
-        return render_template('index.html', message="Catch successfully logged!")
+        return render_template('log.html', message="Catch successfully logged!")
     except Exception as exp:
-        return render_template('index.html', message="Catch could not be logged." + str(exp))
+        return render_template('log.html', message="Catch could not be logged." + str(exp))
+
+
+@app.route('/lookup', methods=['GET'])
+def lookup():
+    print("Received request.")
+
+    area = request.form['area']
+    location = request.form['location']
+
+    db, username, password, hostname = get_db_creds()
+    
+    cnx = ''
+    try:
+        cnx = mysql.connector.connect(user=username, password=password,
+                                      host=hostname,
+                                      database=db)
+    except Exception as exp:
+        print(exp)
+        import MySQLdb
+        cnx = MySQLdb.connect(unix_socket=hostname, user=username, passwd=password, db=db)
+    results = []
+    cur = cnx.cursor() 
+    sql = ("SELECT * FROM fishes WHERE area = '%s' AND location = '%s'" % (area, location))
+    cur.execute(sql)
+    for row in cur:
+        species = str(row[2])
+        amount = (row[3])
+        pop = ""
+        if(amount < 3):
+        	pop = "Population: POOR"
+        elif(amount < 7):
+        	pop = "Population: FAIR"
+        elif(amount < 11):
+        	pop = "Population: GOOD"
+        else:
+        	pop = "Population: EXCELLENT"
+        tup = (species, pop)
+        results.append(tup)
+
+    cnx.commit()
+    if len(results) == 0:
+        return render_template('lookup.html', message ="No fish in location")
+    return render_template('lookup.html', results = results)
+
 
 
 if __name__ == "__main__":

@@ -1,0 +1,48 @@
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/homepagestyle.css') }}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body>
+    
+    <div id="bodycenter">
+      <a href="/"><img src="{{ url_for('static', filename='images/reeltimelogo.png') }}"></a>
+    </div>
+
+  
+  <div id="form"> 
+      <form action="lookup" method="get">
+          <h1>Location Lookup</h1>
+          <h3>Greater area: 
+              <select>
+            <option value="">- Please select below -</option>
+            <option value="Houston" name ="area">Houston</option>
+            <option value="Dallas" name ="area">Dallas</option>
+            <option value="Austin" name ="area">Austin</option>
+        </select></h3>
+          
+        <h3>Specific location: 
+            <select>
+            <option value="">- Please select below -</option>
+            <option value="Houston" name ="location">Houston</option>
+            <option value="Dallas" name ="location">Dallas</option>
+            <option value="Austin" name ="location">Austin</option>
+        </select></h3>
+        
+        <br>
+  
+        <input type="submit" value="Submit">
+    </form>
+  </div>
+
+   <div id="footer">
+      <p>Result:</p>
+      <p>{{ message }}</p>
+      <p>{%for result in results%}
+          {{result}} <br/>
+          {% endfor %}</p>
+    </div>
+
+</body>
+</html>
