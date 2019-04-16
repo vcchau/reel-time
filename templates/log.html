@@ -13,27 +13,27 @@
   
   <div id="form">
       <form action="log_catch" method="post">
-          {{ message }}
+          {{ message | safe }}
           <h1>Log a catch</h1>
           <h3>Greater area: 
             <select name="area" id="area">
                 <option value="">- Please select below -</option>
-                <option value="Lake Houston" name ="location">Lake Houston</option>
-                <option value="Sheldon Lake" name ="location">Sheldon Lake</option>
-                <option value="Buffalo Bayou" name ="location">Buffalo Bayou</option>
-                <option value="Clear Lake" name ="location">Clear Lake</option>
-                <option value="Spring Creek" name ="location">Spring Creek</option>
-                <option value="Grapevine Lake" name ="location">Grapevine Lake</option>
-                <option value="Lewisville Lake" name ="location">Lewisville Lake</option>
-                <option value="Joe Pool Lake" name ="location">Joe Pool Lake</option>
-                <option value="Lake Ray Hubbard" name ="location">Lake Ray Hubbard</option>
-                <option value="Cedar Creek Reservoir" name ="location">Cedar Creek Reservoir</option>
-                <option value="Colorado River" name ="location">Colorado River</option>
-                <option value="Lady Bird Lake" name ="location">Lady Bird Lake</option>
-                <option value="Lake Austin" name ="location">Lake Austin</option>
-                <option value="Shoal Creek" name ="location">Shoal Creek</option>
-                <option value="Barton Creek" name ="location">Barton Creek</option>
-                <option value="Mueller Lake" name ="location">Mueller Lake</option>
+                <option value="Lake Houston">Lake Houston</option>
+                <option value="Sheldon Lake">Sheldon Lake</option>
+                <option value="Buffalo Bayou">Buffalo Bayou</option>
+                <option value="Clear Lake">Clear Lake</option>
+                <option value="Spring Creek">Spring Creek</option>
+                <option value="Grapevine Lake">Grapevine Lake</option>
+                <option value="Lewisville Lake">Lewisville Lake</option>
+                <option value="Joe Pool Lake">Joe Pool Lake</option>
+                <option value="Lake Ray Hubbard">Lake Ray Hubbard</option>
+                <option value="Cedar Creek Reservoir">Cedar Creek Reservoir</option>
+                <option value="Colorado River">Colorado River</option>
+                <option value="Lady Bird Lake">Lady Bird Lake</option>
+                <option value="Lake Austin">Lake Austin</option>
+                <option value="Shoal Creek">Shoal Creek</option>
+                <option value="Barton Creek">Barton Creek</option>
+                <option value="Mueller Lake">Mueller Lake</option>
             </select>
         </h3>
           
