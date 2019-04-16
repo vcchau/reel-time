@@ -8,11 +8,12 @@ from mysql.connector import errorcode
 app = Flask(__name__)
 
 def get_db_creds():
-    db = os.environ.get("DB", None) or os.environ.get("database", None)
-    username = os.environ.get("USER", None) or os.environ.get("username", None)
-    password = os.environ.get("PASSWORD", None) or os.environ.get("password", None)
-    hostname = os.environ.get("HOST", None) or os.environ.get("dbhost", None)
-    return db, username, password, hostname
+    db = os.environ.get("DB", None) or os.environ.get("database", None) or "reel_time_db"
+    username = os.environ.get("USER", None) or os.environ.get("username", None) or "myadmin"
+    password = os.environ.get("PASSWORD", None) or os.environ.get("password", None) or "Reeltime!"
+    hostname = os.environ.get("HOST", None) or os.environ.get("dbhost", None) or "reel-time-db.chr9q1gt6nxw.us-east-1.rds.amazonaws.com"
+    port = 3306
+    return db, username, password, hostname, port
 
 def create_table():
     # Check if table exists or not. Create and populate it only if it does not exist.
@@ -55,7 +56,7 @@ def log_catch():
     return render_template("log.html")
 
 @app.route('/log_catch', methods=['POST'])
-def log_catch():
+def add_to_db():
     print("Received request.")
     area = request.form['area']
     location = request.form['location']
@@ -65,17 +66,19 @@ def log_catch():
     if(species == 'Other'):
     	species = request.form['other_species']
 
-    db, username, password, hostname = get_db_creds()
+    # db, username, password, hostname, port = get_db_creds()
+
+    print area, location, species, curr_amount, other 
 
     cnx = ''
     try:
-        cnx = mysql.connector.connect(user=username, password=password,
-                                      host=hostname,
-                                      database=db)
+        cnx = mysql.connector.connect(user="myadmin", password="Reeltime!",
+                                      host="reel-time-db.chr9q1gt6nxw.us-east-1.rds.amazonaws.com", port=3306, 
+                                      database="reel_time_db")
     except Exception as exp:
         print(exp)
         import MySQLdb
-        cnx = MySQLdb.connect(unix_socket=hostname, user=username, passwd=password, db=db)
+        cnx = MySQLdb.connect(unix_socket=hostname, user=username, passwd=password, db=db, port=port)
 
     cur = cnx.cursor()
     cur0 = cnx.cursor(buffered=True)
@@ -89,53 +92,9 @@ def log_catch():
     try:
         cur.execute(sql, val)
         cnx.commit()
-        return render_template('log.html', message="Catch successfully logged!")
+        return render_template('index.html', message="Catch successfully logged!")
     except Exception as exp:
-        return render_template('log.html', message="Catch could not be logged." + str(exp))
-
-
-@app.route('/lookup', methods=['GET'])
-def lookup():
-    print("Received request.")
-
-    area = request.form['area']
-    location = request.form['location']
-
-    db, username, password, hostname = get_db_creds()
-    
-    cnx = ''
-    try:
-        cnx = mysql.connector.connect(user=username, password=password,
-                                      host=hostname,
-                                      database=db)
-    except Exception as exp:
-        print(exp)
-        import MySQLdb
-        cnx = MySQLdb.connect(unix_socket=hostname, user=username, passwd=password, db=db)
-    results = []
-    cur = cnx.cursor() 
-    sql = ("SELECT * FROM fishes WHERE area = '%s' AND location = '%s'" % (area, location))
-    cur.execute(sql)
-    for row in cur:
-        species = str(row[2])
-        amount = (row[3])
-        pop = ""
-        if(amount < 3):
-        	pop = "Population: POOR"
-        elif(amount < 7):
-        	pop = "Population: FAIR"
-        elif(amount < 11):
-        	pop = "Population: GOOD"
-        else:
-        	pop = "Population: EXCELLENT"
-        tup = (species, pop)
-        results.append(tup)
-
-    cnx.commit()
-    if len(results) == 0:
-        return render_template('lookup.html', message ="No fish in location")
-    return render_template('lookup.html', results = results)
-
+        return render_template('index.html', message="Catch could not be logged." + str(exp))
 
 
 if __name__ == "__main__":
