@@ -1,0 +1,63 @@
+<html>
+<head>
+  <meta charset='UTF-8'>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/homepagestyle.css') }}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 
+  <script>
+    $(function() {
+    
+      $("#text-one").change(function() {
+        $("#text-two").load("textdata/" + $(this).val() + ".txt");
+      });
+
+    });
+  </script>
+
+</head>
+<body>
+    
+    <div id="bodycenter">
+      <a href="/"><img src="{{ url_for('static', filename='images/reeltimelogo.png') }}"></a>
+    </div>
+
+
+  
+
+  
+  <div id="form">
+        <div id="result">
+                <p>Result:</p>
+                <p>{{ message }}</p>
+                <p>{%for result in results%}
+                    {{result}} <br/>
+                    {% endfor %}</p>
+              </div>
+      <form action="lookup_search" method="get">
+          <h1>Location Lookup</h1>
+          <h3>Greater area:
+            <select id="text-one" name = "area">
+            <option selected value="base">- Please select below -</option>
+            <option value="Houston">Houston</option>
+            <option value="Dallas">Dallas</option>
+            <option value="Austin">Austin</option>
+        </select></h3>
+        
+        <h3>Specific location: 
+        <select id="text-two">
+            <option>Please choose from above</option>
+        </select></h3>
+      
+        
+        <br>
+  
+        <input type="submit" value="Submit">
+    </form>
+  </div>
+
+
+</body>
+</html>
