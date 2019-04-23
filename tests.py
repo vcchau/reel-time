@@ -1,11 +1,11 @@
-from app import app 
+from app import app
 from flask import url_for
 import unittest
 
 
 
 class Flask_Tests(unittest.TestCase):
-        
+
 
     def test_basic_test(self):
         # Test unit tests are properly functioning
@@ -19,7 +19,7 @@ class Flask_Tests(unittest.TestCase):
         result = test.get('/')
         self.assertEqual(result.status_code, 200)
 
-    
+
     def test_log(self):
         """Test log page"""
         test = app.test_client(self)
