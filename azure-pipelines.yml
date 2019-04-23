@@ -1,0 +1,30 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Test script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+
+  
+unittest:
+  image: python:latest
+  script:
+    - pip install -r requirements.txt
+    - python tests.py
+    - date 
+    - uname -a
+    - printenv | sort
+    - sudo apt-get update && sudo apt-get -y upgrade 
+  displayName: 'Run unittests'
