@@ -13,11 +13,6 @@ steps:
 - script: echo Hello, world!
   displayName: 'Test script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-
-  
 
 - script: |
     sudo apt-get update && sudo apt-get -y upgrade 
