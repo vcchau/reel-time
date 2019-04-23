@@ -19,7 +19,7 @@ steps:
 
   
 
-- script:
+- script: |
     date 
     printenv | sort
     sudo apt-get update && sudo apt-get -y upgrade 
